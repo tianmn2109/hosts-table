@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+
+{% load humanize %}
+
+{% block title %}Hosts list          
+{% endblock %}
+
+{% block body %}
+<h1>Hosts</h1>
+<span><a href="http://tianmn2109-OptiPlex-755:8000/example">examples</a></span>
+
+<script>
+function clicked(){
+    window.location.reload("http://www.baidu.com")
+}
+</script>
+<div style="border:1px solid #ccc;float:right;"><input type="button" style="background:#cccccc" onClick="javascrtpt:window.location.href='http://tianmn2109-optiplex-755.bj.intel.com:8000/download'" value="Download"></div> 
+<div class="container">
+<table class="table">
+  <tr>
+    <th>Hostname</th>
+    <th>Mac Addr</th>
+    <th>Memory</th>
+    <th>Disk</th>
+    <th>CPU</th>
+    <th>UUID / SN</th>
+    <th>OS Infomation</th>
+    <th>Maintainer</th>
+    <th>Badge Number</th>
+    <th>Machine Position</th>
+    <th>Updated</th>
+  </tr>
+  {% for h in hosts %}
+  <tr>
+    <td><span>
+        <a href="{% url 'raw' h.ip %}">
+          {{ h.hostname }}
+          ({{ h.ip }})</a></span>
+    </td>
+    <td>{{ h.mac }}</td>
+    <td>{{ h.memory }}</td>
+    <td>{{ h.disk }}</td>
+    <td>{{ h.cpus }}</td>
+    <td>{{ h.uuid }} / {{ h.sn }}</td>
+    <td>{{ h.osinfo }}</td>
+    <td>{{ h.maintainer }}</td>
+    <td>{{ h.badgenumber }}</td>
+    <td>{{ h.machinepos }}</td>
+    <td>{{ h.updated|naturaltime }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+{% endblock %}

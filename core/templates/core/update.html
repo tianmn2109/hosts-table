@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+{% block title %} Update Infomation
+{% endblock %}
+
+{% block body %}
+<h1>Update Infomation</h1>
+
+<table class="table">
+    <tr>
+        <th>Hostname</th>
+        <th>UUID</th>
+        <th>Operation</th>
+        <th>Update Time</th>
+    </tr>
+
+    {% for u in updates %}
+    <tr>
+        <td>
+            {{ u.hostname }}
+        </td>
+        <td>
+            {{ u.uuid }}
+        </td>
+        <td>
+            {{ u.operation }}
+        </td>
+        <td>
+            {{ u.changetime }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
